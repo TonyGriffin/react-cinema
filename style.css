@@ -1,0 +1,58 @@
+.app {
+  background-color: rgb(25,25,112);
+  color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.app__headercontainer {
+  background-color: black;
+  display: block;
+  width: 100%;
+  
+  padding-bottom: 20px;
+}
+
+.app__logo{
+  text-align: center;
+
+}
+
+.app__movietitle {
+  text-decoration: underline;
+}
+
+.app__movieposter {
+
+}
+
+.app__movieplot {
+  margin: 50px;
+}
+
+.app__moviethumbs {
+
+}
+
+.searchinputs__form {
+  display: flex;
+  justify-content: space-around;
+}
+
+.searchinputs__button {
+  border: 2px solid black;
+}
+
+.thumb__singlethumb {
+
+}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 960px) {}
+
+@media (min-width: 1200px) {}
