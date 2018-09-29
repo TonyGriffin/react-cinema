@@ -30,7 +30,7 @@ class SearchInputs extends React.Component {
 
         <form className="searchinputs__form" onSubmit={this.handleSubmit} id="searchinputs__form">
           <input className="searchinputs__textbox" onChange={this.handleChange} placeholder="Enter Your Search"  value={this.state.searchQuery}/>
-          <button className="searchinputs__button">Press For Movie Info!</button>
+          <button className="searchinputs__button">Press To Search Movies!</button>
         </form>
 
       </div>

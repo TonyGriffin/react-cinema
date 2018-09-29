@@ -74,8 +74,9 @@ class App extends React.Component {
       this.setState( {
         plot: content.Plot,
         poster: poster
-
       })
+      //below code returns the view to the movie title set
+      //with the ref attribute on the h2.
       if (this._title) {
         this._title.scrollIntoView();
       }
@@ -90,6 +91,9 @@ class App extends React.Component {
       {pageNum: this.state.pageNum + 1}
       , () => this.apiMovieCall()
     );
+    if (this._title) {
+      this._title.scrollIntoView();
+    }
   }
 
   handlePrevious() {
@@ -98,6 +102,9 @@ class App extends React.Component {
       {pageNum: this.state.pageNum - 1}
       , () => this.apiMovieCall()
     );
+    if (this._title) {
+      this._title.scrollIntoView();
+    }
   }
 
 
@@ -113,14 +120,18 @@ class App extends React.Component {
         <main className="app__content">
 
 
-
+        <div className="app__movie" >
           <h2 ref={h2 => this._title = h2} className="app__movietitle"> {this.state.movieTitle} </h2>
           <img className="app__movieposter" src={this.state.poster} />
           <Info className="app__movieplot" moviePlot={this.state.plot} />
-          <Thumbs className="app__moviethumbs" movieArray={this.state.movieArray} moviePlot={this.state.plot} imdbRating={this.state.imdbRating}  receivePlot={this.receivePlot}/>
+        </div>
+          <Thumbs className="app__thumbs" movieArray={this.state.movieArray} moviePlot={this.state.plot} imdbRating={this.state.imdbRating}  receivePlot={this.receivePlot}/>
+          
 
-          <button onClick={this.handlePrevious}>Previous</button>
-          <button onClick={this.handleNext}>Next</button>
+        <div className="app__pagenationbuttons" >
+          <button className="app__pageprevious" onClick={this.handlePrevious}>Previous</button>
+          <button className="app__pagenext" onClick={this.handleNext}>Next</button>
+        </div>
 
         </main>
       </div>
