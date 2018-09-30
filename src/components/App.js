@@ -3,9 +3,12 @@ import SearchInputs from './SearchInputs';
 import Info from './Info';
 import Thumbs from './Thumbs';
 
+const myStorage = window.localStorage;
+
 class App extends React.Component {
   constructor() {
     super();
+
 
     this.state= {
       movieArray: [],
@@ -13,7 +16,8 @@ class App extends React.Component {
       movieTitle: "",
       poster : "",
       plot : "",
-      pageNum: 1
+      pageNum: 1,
+      localStore: []
     }
 
     this.receiveQuery = this.receiveQuery.bind(this);
@@ -56,7 +60,6 @@ class App extends React.Component {
 
 
 
-
   receiveQuery(userInput) {
     this.setState( {
       searchQuery : userInput
@@ -64,7 +67,7 @@ class App extends React.Component {
   }
 
 
-  //Only when u click in something
+  //Only when u click on the image thumb
   receivePlot(imdbID, poster) {
     let titleUrl =`http://www.omdbapi.com/?apikey=323bfd8f&i=${imdbID}&plot=full&page=${this.state.pageNum}`
     fetch(titleUrl)
@@ -81,7 +84,6 @@ class App extends React.Component {
         this._title.scrollIntoView();
       }
     })
-
   }
 
   //PagenationS
@@ -108,12 +110,45 @@ class App extends React.Component {
   }
 
 
+
+  addToLocalStore(imdbKey, moviePoster) {
+    myStorage.setItem(imdbKey, moviePoster);
+    console.log(myStorage);
+  }
+
+  removeFromLocalStore(imdbKey) {
+    myStorage.removeItem(imdbKey);
+    console.log(myStorage);
+  }
+
+  // addToLocalStore(imdbKey, moviePoster) {
+  //   // create a new item
+  //   const newItem = {
+  //     imdbKey: moviePoster,
+  //     value: this.state.newItem.slice()
+  //   };
+  //
+  //   // copy current list of items
+  //   const list = [...this.state.list];
+  //
+  //   // add the new item to the list
+  //   list.push(newItem);
+  //
+  //   // update state with new list, reset the new item input
+  //   this.setState({
+  //     list,
+  //     newItem: ""
+  //   });
+  // }
+
+
+
   render() {
     return (
       <div className="app">
 
         <div className="app__headercontainer">
-          <h1 className="app__logo">Website Title Here</h1>
+          <h1 className="app__logo">Tony's Titles</h1>
           <SearchInputs className="app__searchinputs" receiveQuery={this.receiveQuery} />
         </div>
 
@@ -125,8 +160,8 @@ class App extends React.Component {
           <img className="app__movieposter" src={this.state.poster} />
           <Info className="app__movieplot" moviePlot={this.state.plot} />
         </div>
-          <Thumbs className="app__thumbs" movieArray={this.state.movieArray} moviePlot={this.state.plot} imdbRating={this.state.imdbRating}  receivePlot={this.receivePlot}/>
-          
+
+          <Thumbs className="app__thumbs" movieArray={this.state.movieArray} moviePlot={this.state.plot} imdbRating={this.state.imdbRating}  receivePlot={this.receivePlot} addToLocalStore={this.addToLocalStore}/>
 
         <div className="app__pagenationbuttons" >
           <button className="app__pageprevious" onClick={this.handlePrevious}>Previous</button>
