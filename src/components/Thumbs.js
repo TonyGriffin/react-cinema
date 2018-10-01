@@ -10,9 +10,9 @@ class Thumbs extends React.Component {
   render() {
     return (
     <div className="thumbs">
-      {this.props.movieArray.map( movie => {
+      {this.props.movieArray.map( movieItem => {
         return (
-          <Thumb className="thumbs__movieitem" key={movie.imdbID} movieItem={movie} moviePlot={this.props.moviePlot} receivePlot={this.props.receivePlot} removeFromLocalStore={this.props.removeFromLocalStore} addToLocalStore={this.props.addToLocalStore}   />
+          <Thumb className="thumbs__movieitem" key={movieItem.imdbID} movieItem={movieItem} moviePlot={this.props.moviePlot} receivePlot={this.props.receivePlot} removeFromLocalStore={this.props.removeFromLocalStore} addToLocalStore={this.props.addToLocalStore} />
         )
       })}
     </div>)

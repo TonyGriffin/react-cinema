@@ -1,10 +1,17 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .app {
   background-color: rgb(25,25,112);
   display: flex;
+  flex-flow: 1;
+  flex-grow: 1;
   flex-direction: column;
   color: white;
   border: 5px solid grey;
-  border-radius: 20px;
   width: 100%;
   height: 100%;
 
@@ -12,16 +19,28 @@
 
 .app__headercontainer {
   background-color: black;
-  /* display: block;
-  width: 100%;
-  height: 100%; */
-  /* margin:auto; */
-  border-radius: 20px 20px 0 0;
   padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.app__logo{
+.app__logo__container{
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.app__logo__image {
+  border-radius: 5px;
+}
+
+.app__title {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  font-size: 50px;
 }
 
 .searchinputs__textbox {
@@ -31,13 +50,8 @@
 }
 
 .app__content {
-  /* padding-left: 1rem;
-  padding-right: 1rem; */
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  border-radius: 20px;
 }
 
 .app__movie{
@@ -71,12 +85,8 @@
   padding: 20px 5px;
   margin: 0 2.5rem;
   font-size: 1.25rem;
-  background-color: grey;
+  background-color: rgb(70,130,180);
   box-shadow: 0px 10px 30px 5px rgba(255,255,255,0.7);
-}
-
-.app__thumbs {
-
 }
 
 .searchinputs__form {
@@ -92,7 +102,7 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-  /* align-items: center; */
+  flex-wrap: wrap;
 }
 
 .thumb__container {
@@ -104,41 +114,43 @@
   box-shadow: 0px 10px 30px 5px rgba(255,255,255,0.7);
 }
 
-.thumb__singlethumbimage {
-  /* border-radius: 20px 20px 0 0; */
-}
-
-.thumb__favbutton__add {
+.favbutton__add__button {
   background-color: rgb(0,128,128);
   border-radius: 15px 15px 0px 0px;
   color: white;
   padding: 0.5rem;
+  width: 100%;
 }
 
-.thumb__favbutton__add:hover {
+.favbutton__add__button:hover {
   background-color: yellow;
   color: black;
 }
 
-.thumb__favbutton__remove {
+.favbutton__remove__button {
   background-color: rgb(0,128,128);
   border-radius: 0px 0px 15px 15px;
   color: white;
   padding: 0.5rem;
+  width: 100%;
 }
 
-.thumb__favbutton__remove:hover {
+.favbutton__remove__button:hover {
   background-color: yellow;
   color: black;
 }
 
-.thumb__singlethumb {
- /* display: flex;
- flex-direction: column; */
- margin: 40px;
+.thumb__singlethumb__container {
+  display: flex;
+  flex-direction: column;
+  flex-flow: 1;
+}
+
+.thumb__singlethumb__image {
+ flex-flow: 1;
  border: 3px solid white;
- border-radius: 20px;
  box-shadow: 0px 10px 30px 5px rgba(255,255,255,0.7);
+ cursor:pointer;
 }
 
 .app__pagenationbuttons {
@@ -157,14 +169,60 @@
   background-color: yellow;
 }
 
+.app__pagenext {
+  background-color: white;
+}
 
-@media (min-width: 768px) {}
+.app__pageprevious {
+  background-color: white;
+}
+
+
+@media (min-width: 768px) {
+
+  .app__thumbs__container{
+    width: 70%;
+    align-self: center;
+  }
+
+  .thumbs {
+    display: flex;
+  }
+
+  .app__movie {
+    width: 80%;
+    align-self: center;
+    margin-bottom: 40px;
+  }
+
+}
 
 @media (min-width: 960px) {
 
-  .thumb__singlethumb:hover {
-   transform: scale(1.5);
+  .app__movieposter {
+    width: 60%;
+    align-self: center;
+  }
+
+  .thumbs {
+    display: flex;
+    align-self: center;
+  }
+
+  .thumb__container {
+    display: flex;
+  }
+
+  .thumb__singlethumb__image:hover {
+   transform: scale(1.2);
   }
 }
 
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+
+  .app__thumbs__container {
+    display: flex;
+    flex-direction: column;
+
+    }
+}

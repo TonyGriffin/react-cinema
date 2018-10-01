@@ -1,3 +1,13 @@
+## README for Week 4 React-Cinema Project:
+
+This week we used react components to create an app that allows us to search for movies by search word.
+We used the OMDB api to gather the data, calling on it to initally set up the app state in the componentDidMount lifecycle function...and then again when the user searches with a word.
+
+Favourites components were added to contain the search information returned, with the aim to be storing this info in local storage...however i was unable to get this to work in the way it should.
+
+Pagenation works by declaring the initil state to be page 1 in the component state area. This will be changed by using a fetch call each time the user clicks on the pages buttons.
+
+
 # React Cinema
 
 Let's revisit our first project where we built a movie search engine using the Open Movie Database. This time we want to implement it using React. It should be a Single Page App, that is all the functionality should be on a single page, rather switch between multiple pages.
